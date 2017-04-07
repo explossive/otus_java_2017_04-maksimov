@@ -82,7 +82,8 @@
                         <option>-keep public class ru.otus.lesson1.Main { *; }</option>
                         <option>-keep public enum * { *;}</option>
                     </options>
-                    <outjar>${project.build.finalName}.jar</outjar>
+                    <injar>${project.build.finalName}.jar</injar>
+                    <outjar>obfuscated-${project.build.finalName}.jar</outjar>
                     <libs>
                         <lib>${java.home}/lib/rt.jar</lib>
                         <lib>${java.home}/lib/jsse.jar</lib>
