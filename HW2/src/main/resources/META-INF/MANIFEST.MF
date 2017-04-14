@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+Built-By: Dmitriy
+Build-Jdk: 1.8.0_121
+Main-Class: ru.otus.main.Main
+Premain-class: ru.otus.main.InstrumentationAgent
+Agent-class: ru.otus.main.InstrumentationAgent
