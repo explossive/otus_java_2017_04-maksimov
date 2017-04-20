@@ -7,7 +7,7 @@
     <!-- Project Object Model -->
 
     <name>2017-04-L3</name>
-    <description>2017-04-L2</description>
+    <description>2017-04-L3</description>
 
     <developers>
         <developer>
@@ -28,27 +28,18 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>2.3.2</version>
+                <artifactId>maven-assembly-plugin</artifactId>
                 <configuration>
                     <archive>
                         <manifest>
-                            <addClasspath>true</addClasspath>
-                            <classpathPrefix>lib/</classpathPrefix>
-                            <mainClass>
-                                ru.otus.main.Main
-                            </mainClass>
+                            <mainClass>ru.otus.main.Main</mainClass>
                         </manifest>
                     </archive>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <finalName>${project.name}_${java.version}_${os.name}</finalName>
+                    <appendAssemblyId>false</appendAssemblyId>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
                 </configuration>
             </plugin>
         </plugins>
