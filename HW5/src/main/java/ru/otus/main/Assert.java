@@ -5,7 +5,6 @@ package ru.otus.main;
  */
 public class Assert {
 
-
     static public void assertTrue(String message, boolean value) {
         if (!value) {
             fail(message);
