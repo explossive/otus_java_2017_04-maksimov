@@ -1,6 +1,5 @@
 package ru.otus.main;
 
-
 import org.junit.Assert;
 import org.junit.Test;
 
