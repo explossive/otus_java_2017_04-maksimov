@@ -1,15 +1,9 @@
 package ru.otus.main.Lightson;
 
 
-class Json {
+interface Json {
 
-    private StringBuilder data;
 
-    public Json() {
-        data = new StringBuilder();
-    }
+    String toJson(Object src);
 
-    public void add(String field){
-
-    }
 }
