@@ -1,36 +1,14 @@
 package ru.otus.main.Lightson;
 
+import ru.otus.main.Lightson.helper.JsonHelper;
 
-
-import ru.otus.main.PrimitiveClass;
-
-import java.lang.reflect.Field;
-
-public class Lightson implements Json {
+public class Lightson {
 
     /**
-     * @param obj
+     * @param element
      * @return
      */
-    @Override
-    public String toJson(Object obj) {
-        JsonBuilder builder = new JsonBuilder(obj);
-        return builder.build(obj).getJson();
+    public String toJson(Object element) {
+        return new JsonBuilder(JsonHelper.getStrategy(element)).build(element).getJson();
     }
-
-
-    /**
-     * @param json
-     * @param clazz
-     * @param <T>
-     * @return
-     */
-    public <T> T fromJson(String json, Class<T> clazz) {
-        return null;
-    }
-
-
-
-
-
 }

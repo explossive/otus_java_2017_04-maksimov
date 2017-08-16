@@ -1,4 +1,4 @@
-package ru.otus.main.Lightson;
+package ru.otus.main.Lightson.elements;
 
 
 public interface JsonElement {
