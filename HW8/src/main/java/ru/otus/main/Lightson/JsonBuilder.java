@@ -1,14 +1,27 @@
 package ru.otus.main.Lightson;
 
-
-import ru.otus.main.Lightson.elements.JsonArray;
 import ru.otus.main.Lightson.elements.JsonElement;
+import ru.otus.main.Lightson.strategy.JsonStrategy;
 
 public class JsonBuilder {
-    public JsonBuilder(Object obj) {
+
+    private JsonStrategy jsonStrategy;
+    private String name = null;
+
+    public JsonBuilder(JsonStrategy jsonStrategy) {
+        this.jsonStrategy = jsonStrategy;
     }
 
-    public JsonElement build(Object obj) {
-        return new JsonArray();
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public JsonElement build(Object object) {
+        JsonElement element = jsonStrategy.buildElement(object, name);
+        return element;
     }
 }
