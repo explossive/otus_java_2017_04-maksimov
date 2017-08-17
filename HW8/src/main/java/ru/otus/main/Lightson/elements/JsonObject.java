@@ -10,7 +10,6 @@ public class JsonObject implements JsonElement {
     @SuppressWarnings("MismatchedQueryAndUpdateOfCollection")
     private List<JsonElement> items  = new ArrayList<>();
 
-
     @Override
     public String getJson() {
         StringBuilder sb = new StringBuilder();
