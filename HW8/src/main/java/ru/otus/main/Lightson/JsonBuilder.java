@@ -15,11 +15,10 @@ public class JsonBuilder {
     public String getName() {
         return name;
     }
-
-    public void setName(String name) {
+    public JsonBuilder setName(String name) {
         this.name = name;
+        return this;
     }
-
     public JsonElement build(Object object) {
         JsonElement element = jsonStrategy.buildElement(object, name);
         return element;

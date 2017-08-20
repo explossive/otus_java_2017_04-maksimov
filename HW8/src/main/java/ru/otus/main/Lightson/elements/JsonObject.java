@@ -7,8 +7,17 @@ import java.util.List;
 
 public class JsonObject implements JsonElement {
 
+    private String name;
+
     @SuppressWarnings("MismatchedQueryAndUpdateOfCollection")
     private List<JsonElement> items  = new ArrayList<>();
+
+    public JsonObject() { }
+
+    public JsonObject(String name) {
+        this();
+        this.name = name;
+    }
 
     @Override
     public String getJson() {
