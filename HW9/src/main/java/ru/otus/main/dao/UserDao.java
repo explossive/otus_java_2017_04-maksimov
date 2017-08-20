@@ -1,20 +1,13 @@
 package ru.otus.main.dao;
 
 
-import ru.otus.main.dataSet.UserDataSet;
 import ru.otus.main.entity.User;
-import ru.otus.main.orm.Orm;
 
+public interface UserDao {
 
-public class UserDao {
-    private Orm orm;
+    public void save(User user);
 
-    public UserDao(Orm orm) {
-        this.orm = orm;
-    }
+    public User findById(int id);
 
-    public void save(User user) {
-        orm.save(user);
-    }
-
+    public void delete(int id);
 }
