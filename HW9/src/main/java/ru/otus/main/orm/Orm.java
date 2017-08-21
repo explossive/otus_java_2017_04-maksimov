@@ -36,6 +36,12 @@ public class Orm {
             return false;
         } catch (SQLException e) {
             return false;
+        } catch (NoSuchFieldException e) {
+            e.printStackTrace();
         }
+
+
+        return false;
     }
+
 }
