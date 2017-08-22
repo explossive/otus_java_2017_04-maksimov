@@ -17,8 +17,8 @@ public class Mapping {
         this.fieldBounds = new ArrayList<>();
     }
 
-    public void addFieldBound(String javaName, String dbName) {
-        this.fieldBounds.add(new Field(javaName, dbName));
+    public void addFieldBound(String javaFieldName, String dbColumnName) {
+        this.fieldBounds.add(new Field(javaFieldName, dbColumnName));
     }
 
     public void setTableName(String tableName) {

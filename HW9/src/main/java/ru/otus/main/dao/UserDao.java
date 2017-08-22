@@ -5,7 +5,7 @@ import ru.otus.main.entity.User;
 
 public interface UserDao {
 
-    public void save(User user);
+    public void insert(User user);
 
     public User findById(int id);
 

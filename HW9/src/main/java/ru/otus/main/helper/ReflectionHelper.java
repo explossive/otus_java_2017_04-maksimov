@@ -32,13 +32,14 @@ public class ReflectionHelper {
         Field[] fields = clazz.getDeclaredFields();
         for (Field field : fields) {
             Column annotationColumn = field.getDeclaredAnnotation(Column.class);
-            if (annotationColumn != null && ((field.getType().isPrimitive() || field.getType() == String.class) || (wrapper.values().contains(field.getDeclaringClass())))) {
-                String javaName = field.getName();
-                String dbName = annotationColumn.name().isEmpty() ? javaName : annotationColumn.name();
-                entityMapping.addFieldBound(javaName, dbName);
-                if (field.isAnnotationPresent(Id.class)) {
-                    entityMapping.setIdFieldName(field.getName());
-                }
+            if ((annotationColumn == null) || ((!field.getType().isPrimitive() && (field.getType() != String.class)) && (!wrapper.values().contains(field.getDeclaringClass())))) {
+                continue;
+            }
+            String javaFieldName = field.getName();
+            String dbColumnName = annotationColumn.name().isEmpty() ? javaFieldName : annotationColumn.name();
+            entityMapping.addFieldBound(javaFieldName, dbColumnName);
+            if (field.isAnnotationPresent(Id.class)) {
+                entityMapping.setIdFieldName(field.getName());
             }
         }
         return entityMapping;
