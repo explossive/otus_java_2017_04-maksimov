@@ -2,9 +2,11 @@ package ru.otus.main.helper;
 
 
 import ru.otus.main.orm.Mapping;
+
 import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Map;
@@ -23,6 +25,10 @@ public class ReflectionHelper {
         wrapper.put(double.class, Double.class);
     }
 
+    /**
+     * @param clazz
+     * @return
+     */
     public static Mapping getMapping(Class<?> clazz) {
 
         Table annotationTable = clazz.getDeclaredAnnotation(Table.class);
@@ -45,6 +51,11 @@ public class ReflectionHelper {
         return entityMapping;
     }
 
+    /**
+     * @param object
+     * @param fieldName
+     * @return
+     */
     public static Object getFieldValue(Object object, String fieldName) {
         boolean isAccessible = true;
         Object value = null;
@@ -66,4 +77,42 @@ public class ReflectionHelper {
         return value;
     }
 
+    /**
+     * @param object
+     * @param fieldName
+     * @param value
+     */
+    public static void setFieldValue(Object object, String fieldName, Object value) {
+        boolean isAccessible = true;
+        Field field = null;
+        try {
+            field = object.getClass().getDeclaredField(fieldName);
+        if (!field.isAccessible()) {
+                field.setAccessible(true);
+                isAccessible = false;
+            }
+
+            field.set(object, value);
+        } catch (IllegalAccessException | NoSuchFieldException e) {
+            e.printStackTrace();
+        }
+
+        if (field != null && !isAccessible) {
+            field.setAccessible(false);
+        }
+    }
+
+    /**
+     * @param clazz
+     * @param <T>
+     * @return
+     */
+    public static <T> T getNewInstance(Class<T> clazz) {
+        Constructor<?>[] constructors = clazz.getDeclaredConstructors();
+        try {
+            return clazz.newInstance();
+        } catch (IllegalAccessException | InstantiationException e) {
+            return null;
+        }
+    }
 }

@@ -1,20 +1,26 @@
 package ru.otus.main.orm;
 
 public class Field {
-    private String javaName;
-    private String dbName;
+    private String javaFieldName;
+    private String dbColumnName;
 
-    public Field(String javaName, String dbName) {
-        this.javaName = javaName;
-        this.dbName = dbName;
+    public Field(String javaFieldName, String dbColumnName) {
+        this.javaFieldName = javaFieldName;
+        this.dbColumnName = dbColumnName;
     }
 
-    public String getJavaName() {
-        return javaName;
+    /**
+     * @return
+     */
+    public String getJavaFieldName() {
+        return javaFieldName;
     }
 
-    public String getDbName() {
-        return dbName;
+    /**
+     * @return
+     */
+    public String getDbColumnName() {
+        return dbColumnName;
     }
 
 }

@@ -6,6 +6,9 @@ import java.sql.SQLException;
 
 public class ConnectionHelper {
 
+    /**
+     * @return
+     */
     public static Connection getConnection() {
         try {
             DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
