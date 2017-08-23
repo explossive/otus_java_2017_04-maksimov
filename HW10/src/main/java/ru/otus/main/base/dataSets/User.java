@@ -1,4 +1,4 @@
-package ru.otus.main.base.entity;
+package ru.otus.main.base.dataSets;
 
 import javax.persistence.*;
 import java.util.Arrays;
@@ -20,6 +20,7 @@ public class User extends DataSet {
     public User() {
     }
 
+    //Important for Hibernate
     public User(long id, String name, Address address, Phone... phones) {
         this.setId(id);
         this.setName(name);
@@ -52,12 +53,8 @@ public class User extends DataSet {
         return name;
     }
 
-    private void setName(String name) {
+    public void setName(String name) {
         this.name = name;
-    }
-
-    public Address getAddress() {
-        return address;
     }
 
     private void setAddress(Address address) {
@@ -72,12 +69,14 @@ public class User extends DataSet {
         this.phones = phones;
     }
 
+
     @Override
     public String toString() {
-        return "UserDataSet{" +
+        return "User{" +
                 "name='" + name + '\'' +
-                ", address=" + address.toString() +
-                ", phones=" + phones.toString() +
+                ", address=" + address +
+                ", phones=" + phones +
                 '}';
     }
 }
+

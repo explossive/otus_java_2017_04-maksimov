@@ -1,4 +1,4 @@
-package ru.otus.main.base.entity;
+package ru.otus.main.base.dataSets;
 
 import javax.persistence.*;
 
@@ -30,9 +30,9 @@ public class Address extends DataSet {
 
     @Override
     public String toString() {
-        return "AddressDataSet{" +
-                "street='" + street + '\'' +
-                ", index=" + index +
+        return "Address{" +
+                "index=" + index +
+                ", street='" + street + '\'' +
                 '}';
     }
 }

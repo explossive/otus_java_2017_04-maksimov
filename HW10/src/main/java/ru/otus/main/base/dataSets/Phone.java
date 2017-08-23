@@ -1,13 +1,10 @@
-package ru.otus.main.base.entity;
+package ru.otus.main.base.dataSets;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "phones")
 public class Phone extends DataSet {
-
-    @Column(name = "code")
-    private int code;
 
     @Column(name = "number")
     private String number;
@@ -19,9 +16,13 @@ public class Phone extends DataSet {
     public Phone() {
     }
 
-    public Phone(int code, String number) {
-        this.code = code;
+    public Phone(String number) {
         this.number = number;
+    }
+
+
+    public String getNumber() {
+        return number;
     }
 
     public void setUser(User user) {
@@ -30,9 +31,8 @@ public class Phone extends DataSet {
 
     @Override
     public String toString() {
-        return "PhoneDataSet{" +
-                "code=" + code +
-                ", number='" + number + '\'' +
+        return "Phone{" +
+                "number='" + number + '\'' +
                 '}';
     }
 }
