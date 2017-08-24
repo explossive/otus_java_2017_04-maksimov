@@ -9,7 +9,7 @@ public class Phone extends DataSet {
     @Column(name = "number")
     private String number;
 
-    @ManyToOne(optional = false)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
 

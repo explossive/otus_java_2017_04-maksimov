@@ -12,7 +12,7 @@ public class Address extends DataSet {
     @Column(name = "postal_index")
     private int index;
 
-    @OneToOne(optional = false)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
 

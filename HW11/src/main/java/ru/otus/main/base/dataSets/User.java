@@ -1,10 +1,15 @@
 package ru.otus.main.base.dataSets;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+import org.hibernate.annotations.Proxy;
+
 import javax.persistence.*;
 import java.util.Arrays;
 import java.util.List;
 
 @Entity
+@Proxy(lazy = false)
 @Table(name = "users")
 public class User extends DataSet {
 
@@ -12,9 +17,11 @@ public class User extends DataSet {
     private String name;
 
     @OneToOne(cascade = CascadeType.ALL, targetEntity = Address.class, mappedBy = "user", orphanRemoval = true)
+    @Fetch(FetchMode.JOIN)
     private Address address;
 
     @OneToMany(cascade = CascadeType.ALL, targetEntity = Phone.class, mappedBy = "user", orphanRemoval = true)
+    @Fetch(FetchMode.JOIN)
     private List<Phone> phones;
 
     public User() {
@@ -68,7 +75,6 @@ public class User extends DataSet {
     private void setPhones(List<Phone> phones) {
         this.phones = phones;
     }
-
 
     @Override
     public String toString() {

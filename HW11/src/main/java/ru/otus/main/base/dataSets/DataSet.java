@@ -1,9 +1,10 @@
 package ru.otus.main.base.dataSets;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @MappedSuperclass
-public class DataSet {
+public class DataSet implements Serializable {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)

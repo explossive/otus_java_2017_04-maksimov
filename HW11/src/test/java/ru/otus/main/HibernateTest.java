@@ -8,6 +8,7 @@ import ru.otus.main.base.DBService;
 import ru.otus.main.base.dataSets.Address;
 import ru.otus.main.base.dataSets.Phone;
 import ru.otus.main.base.dataSets.User;
+import ru.otus.main.cache.CacheEngineImpl;
 import ru.otus.main.dbService.DBServiceImpl;
 
 import java.util.ArrayList;
@@ -19,7 +20,7 @@ public class HibernateTest {
 
     @BeforeClass
     public static void setupHibernate() {
-        dbService = new DBServiceImpl();
+        dbService = new DBServiceImpl(new CacheEngineImpl<>(10, 0, 0, false));
     }
 
     @Test
@@ -29,7 +30,7 @@ public class HibernateTest {
         phones.add(new Phone("45748537"));
         phones.add(new Phone("34523523"));
         User user = new User("Test", address, phones);
-        DBService dbService = new DBServiceImpl();
+        DBService dbService = new DBServiceImpl(new CacheEngineImpl<>(10, 0, 0, false));
         dbService.save(user);
         User readUser = dbService.read(1);
         Assert.assertEquals("User is not found", readUser.getId(), user.getId());
