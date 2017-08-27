@@ -1,38 +1,39 @@
 package ru.otus.main;
 
-import ru.otus.main.base.dataSets.Address;
-import ru.otus.main.base.dataSets.Phone;
-import ru.otus.main.base.dataSets.User;
+
+import org.eclipse.jetty.server.Server;
+import org.eclipse.jetty.server.handler.HandlerList;
+import org.eclipse.jetty.server.handler.ResourceHandler;
+import org.eclipse.jetty.servlet.ServletContextHandler;
+import org.eclipse.jetty.servlet.ServletHolder;
+import ru.otus.main.base.DBService;
 import ru.otus.main.cache.CacheEngineImpl;
 import ru.otus.main.dbService.DBServiceImpl;
+import ru.otus.main.servlet.AdminServlet;
+import ru.otus.main.servlet.LoginServlet;
+import ru.otus.main.servlet.TimerServlet;
 
-import java.util.List;
 
 public class Main {
-    public static void main(String[] args) {
-        DBServiceImpl dbService = new DBServiceImpl(new CacheEngineImpl<>(10, 0, 0, true));
 
-        String status = dbService.getLocalStatus();
-        System.out.println("Status: " + status);
+    private final static int PORT = 8090;
+    private final static String PUBLIC_HTML = "public_html";
 
-        dbService.save(new User("1111", new Address("111", 456657), new Phone("1111")));
-        dbService.save(new User("2222", new Address("222", 456657), new Phone("2222")));
+    public static void main(String[] args) throws Exception {
+        DBService dbService = new DBServiceImpl(new CacheEngineImpl<>(10, 0, 0, true));
+        ResourceHandler resourceHandler = new ResourceHandler();
+        resourceHandler.setResourceBase(PUBLIC_HTML);
 
-        User data = dbService.read(1);
-        System.out.println(data);
-        data = dbService.read(1);
-        System.out.println(data);
+        ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
 
-        data = dbService.readByName("1111");
-        System.out.println(data);
-        data = dbService.readByName("1111");
-        System.out.println(data);
+        context.addServlet(new ServletHolder(new LoginServlet("anonymous")), "/login");
+        context.addServlet(AdminServlet.class, "/admin");
+        context.addServlet(TimerServlet.class, "/timer");
 
-        List<User> dataSets = dbService.readAll();
-        dataSets.forEach(System.out::println);
-        dataSets = dbService.readAll();
-        dataSets.forEach(System.out::println);
+        Server server = new Server(PORT);
+        server.setHandler(new HandlerList(resourceHandler, context));
 
-        dbService.shutdown();
+        server.start();
+        server.join();
     }
 }
