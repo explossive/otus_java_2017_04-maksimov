@@ -76,6 +76,11 @@ public class CacheEngineImpl<K, V> implements CacheEngine<K, V> {
     }
 
     @Override
+    public int getElementsCount() {
+        return elements.size();
+    }
+
+    @Override
     public void dispose() {
         timer.cancel();
     }

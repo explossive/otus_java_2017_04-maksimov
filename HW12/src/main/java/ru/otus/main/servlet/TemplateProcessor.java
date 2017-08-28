@@ -14,7 +14,7 @@ import java.util.Map;
  * @author v.chibrikov
  */
 class TemplateProcessor {
-    private static final String HTML_DIR = "tml";
+    private static final String HTML_DIR = "HW12/tml";
     private static TemplateProcessor instance = new TemplateProcessor();
 
     private final Configuration configuration;

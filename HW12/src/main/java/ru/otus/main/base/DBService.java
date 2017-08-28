@@ -17,4 +17,6 @@ public interface DBService {
     List<User> readAll();
 
     void shutdown();
+
+    int[] getCacheStats();
 }
