@@ -2,29 +2,22 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8"/>
-    <title>Admin</title>
+    <title>cache</title>
 </head>
 <body>
 <div class="top">
     <img src="logo.png"/>
     <br/>
     <a href="login">Login</a>
-    <a href="admin">Admin</a>
-    <a href="timer">Timer</a>
     <a href="cache">Cache stats</a>
 </div>
 
-<p>Login: ${login}</p>
+<p>cache: </p>
 
-<p>Method: ${method}</p>
-
-<p>URL: ${URL}</p>
-
-<p>Locale: ${locale}</p>
-
-<p>SessionId: ${sessionId}</p>
-
-<p>Parameters: ${parameters}</p>
-
+<ul>
+    <li><p>Element: <span id='element'>${element}</span></p></li>
+    <li><p>Hit: <span id='hit'>${hit}</span></p></li>
+    <li><p>Miss: <span id='miss'>${miss}</span></p></li>
+</ul>
 </body>
 </html>
