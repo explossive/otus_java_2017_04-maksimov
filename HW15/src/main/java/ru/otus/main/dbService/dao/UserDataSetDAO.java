@@ -1,6 +1,5 @@
 package ru.otus.main.dbService.dao;
 
-import ru.otus.main.base.dataSets.DataSet;
 import ru.otus.main.base.dataSets.User;
 import org.hibernate.Session;
 import org.hibernate.query.Query;

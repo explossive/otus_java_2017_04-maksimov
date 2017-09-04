@@ -1,6 +1,5 @@
 package ru.otus.main.base;
 
-import ru.otus.main.base.dataSets.DataSet;
 import ru.otus.main.base.dataSets.User;
 
 import java.util.List;
