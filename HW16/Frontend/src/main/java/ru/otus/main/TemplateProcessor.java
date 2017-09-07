@@ -10,11 +10,9 @@ import java.io.StringWriter;
 import java.io.Writer;
 import java.util.Map;
 
-/**
- * @author v.chibrikov
- */
+
 class TemplateProcessor {
-    private static final String HTML_DIR = "HW15/tml";
+    private static final String HTML_DIR = "HW16/tml";
     private static TemplateProcessor instance = new TemplateProcessor();
 
     private final Configuration configuration;
